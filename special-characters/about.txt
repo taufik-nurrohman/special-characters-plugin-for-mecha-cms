@@ -1,0 +1,8 @@
+Title: Special Character
+Author: Taufik Nurrohman
+URL: http://latitudu.com
+Version: 1.0.0
+
+====
+
+> Add a special character insertion button on the post editor toolbar.

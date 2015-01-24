@@ -1,0 +1,2 @@
+plugin_sc_title_modal: Select Character to Insert
+plugin_sc_title_button: Special Character

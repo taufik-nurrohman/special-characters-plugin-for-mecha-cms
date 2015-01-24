@@ -1,0 +1,8 @@
+Title: Karakter Spesial
+Author: Taufik Nurrohman
+URL: http://latitudu.com
+Version: 1.0.0
+
+====
+
+> Menambahkan tombol penyisipan karakter spesial pada _toolbar_ editor posting.
