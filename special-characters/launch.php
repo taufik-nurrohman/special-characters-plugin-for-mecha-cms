@@ -1,6 +1,10 @@
 <?php
 
-if(strpos($config->url_current, $config->url . '/' . $config->manager->slug . '/') === 0) {
+if(
+    strpos($config->url_current, $config->url . '/' . $config->manager->slug . '/article/') === 0 ||
+    strpos($config->url_current, $config->url . '/' . $config->manager->slug . '/page/') === 0 ||
+    strpos($config->url_current, $config->url . '/' . $config->manager->slug . '/comment/') === 0
+) {
 
     Weapon::add('unit_composer_1_after', function() use($config) {
         $speak = Config::speak();

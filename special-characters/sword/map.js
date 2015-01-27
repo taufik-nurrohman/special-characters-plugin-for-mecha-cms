@@ -287,7 +287,9 @@
         div.appendChild(span);
     }
 
-    document.getElementById('sc-modal-container').appendChild(div);
+    if (document.getElementById('sc-modal-container')) {
+        document.getElementById('sc-modal-container').appendChild(div);
+    }
 
     base.composer.button('at', {
         title: $modal.data('buttonTitle'),
