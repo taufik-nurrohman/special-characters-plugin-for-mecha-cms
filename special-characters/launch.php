@@ -13,6 +13,6 @@ if(strpos($config->url_current, $config->url . '/' . $config->manager->slug . '/
 
     Weapon::add('SHIPMENT_REGION_BOTTOM', function() {
         echo Asset::javascript('cabinet/plugins/' . basename(__DIR__) . '/sword/map.js');
-    });
+    }, 11);
 
 }

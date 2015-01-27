@@ -1,2 +1,2 @@
-plugin_sc_title_modal: Pilih Karakter untuk Disisipkan
+plugin_sc_title_modal: Pilih Karakter Spesial
 plugin_sc_title_button: Karakter Spesial
