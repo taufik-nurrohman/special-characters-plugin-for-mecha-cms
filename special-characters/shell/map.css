@@ -3,7 +3,7 @@
   text-align:center;
 }
 
-.sc-table span {
+.sc-table a {
   display:block;
   float:left;
   width:5%;
@@ -15,10 +15,12 @@
   background-color:white;
   color:black;
   cursor:pointer;
+  text-decoration:none;
 }
 
-.sc-table span:focus,
-.sc-table span:hover {
+.sc-table a:focus,
+.sc-table a:hover {
   background-color:black;
   color:white;
+  text-decoration:none;
 }

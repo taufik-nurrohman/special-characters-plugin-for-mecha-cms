@@ -264,29 +264,29 @@
         ['173', 'soft hyphen']
     ];
 
-    var div = document.createElement('div');
-        div.className = 'sc-table',
+    var div = document.createElement('div'),
         $open = $('#sc-modal-trigger'),
         $close = $('.modal-close-x, .modal-close'),
         $modal = $('#sc-modal');
+
+   div.className = 'sc-table';
 
     $close.on("click", function() {
         var s = base.composer.grip.selection();
         base.composer.grip.select(s.start, s.end);
     });
 
-    for (var y = 0, cen = cm.length; y < cen; y++) {
-        var span = document.createElement('span');
-            span.setAttribute('tabindex', -1);
-            span.setAttribute('role', 'button');
-            span.title = cm[y][1];
-            span.innerHTML = String.fromCharCode(parseInt(cm[y][0], 10));
-            span.onclick = function() {
+    for (var i = 0, cen = cm.length; i < cen; ++i) {
+        var a = document.createElement('a');
+            a.title = cm[i][1];
+            a.innerHTML = String.fromCharCode(parseInt(cm[i][0], 10));
+            a.href = '#';
+            a.onclick = function() {
                 base.composer.grip.insert(this.innerHTML);
                 $close.trigger("click");
                 return false;
             };
-        div.appendChild(span);
+        div.appendChild(a);
     }
 
     if (document.getElementById('sc-modal-container')) {
@@ -297,6 +297,7 @@
         title: $modal.data('buttonTitle'),
         click: function() {
             $open.trigger("click");
+            $modal.find('.sc-table > a')[0].focus();
         }
     });
 
