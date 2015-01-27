@@ -1,5 +1,7 @@
 (function($, base) {
 
+    if (typeof base.composer == "undefined") return;
+
     var cm = [
         ['160', 'no-break space'],
         ['38', 'ampersand'],
