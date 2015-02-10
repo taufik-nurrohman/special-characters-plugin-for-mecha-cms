@@ -1,4 +1,4 @@
-(function($, base) {
+(function(w, d, base) {
 
     if (typeof base.composer == "undefined") return;
 
@@ -262,43 +262,61 @@
         ['8206', 'left-to-right mark'],
         ['8207', 'right-to-left mark'],
         ['173', 'soft hyphen']
-    ];
+    ],
+    speak = base.languages.MTE || null,
+    container, button_c, button_i, a;
 
-    var div = document.createElement('div'),
-        $open = $('#sc-modal-trigger'),
-        $close = $('.modal-close-x, .modal-close'),
-        $modal = $('#sc-modal');
+    container = d.createElement('div');
+    container.className = 'special-character-map';
 
-   div.className = 'sc-table';
-
-    $close.on("click", function() {
-        var s = base.composer.grip.selection();
-        base.composer.grip.select(s.start, s.end);
-    });
-
-    for (var i = 0, cen = cm.length; i < cen; ++i) {
-        var a = document.createElement('a');
-            a.title = cm[i][1];
-            a.innerHTML = String.fromCharCode(parseInt(cm[i][0], 10));
-            a.href = '#';
-            a.onclick = function() {
-                base.composer.grip.insert(this.innerHTML);
-                $close.trigger("click");
-                return false;
-            };
-        div.appendChild(a);
-    }
-
-    if (document.getElementById('sc-modal-container')) {
-        document.getElementById('sc-modal-container').appendChild(div);
+    for (var i = 0, len = cm.length; i < len; ++i) {
+        a = d.createElement('a');
+        a.title = cm[i][1];
+        a.innerHTML = String.fromCharCode(parseInt(cm[i][0], 10));
+        a.href = '#';
+        a.onclick = function() {
+            var c = this.className,
+                s = /(^| )selected( |$)/.test(c);
+            this.className = s ? c.replace(/(^| )selected( |$)/g, '$1$2') : c + ' selected';
+            return false;
+        };
+        a.ondblclick = function() {
+            base.composer.grip.insert(this.innerHTML);
+            base.composer.close(true);
+            return false;
+        };
+        container.appendChild(a);
     }
 
     base.composer.button('at', {
-        title: $modal.data('buttonTitle'),
-        click: function() {
-            $open.trigger("click");
-            $modal.find('.sc-table > a')[0].focus();
+        title: speak.plugin_sc_title_button || 'Special Characters',
+        click: function(e, editor) {
+            editor.modal('special-character', function(overlay, modal) {
+                button_c = d.createElement('button');
+                button_c.innerHTML = speak.buttons.cancel;
+                button_c.onclick = function() {
+                    editor.close(true);
+                    return false;
+                };
+                button_i = d.createElement('button');
+                button_i.innerHTML = speak.buttons.ok || 'OK';
+                button_i.onclick = function() {
+                    var aa = container.children, ii = "";
+                    for (var i = 0, len = aa.length; i < len; ++i) {
+                        if (/(^| )selected( |$)/.test(aa[i].className)) {
+                            ii += aa[i].innerHTML;
+                        }
+                    }
+                    editor.grip.insert(ii);
+                    editor.close(true);
+                    return false;
+                };
+                modal.children[0].innerHTML = speak.plugin_sc_title_modal || 'Select Special Character';
+                modal.children[1].appendChild(container);
+                modal.children[2].appendChild(button_i);
+                modal.children[2].appendChild(button_c);
+            });
         }
     });
 
-})(Zepto, DASHBOARD);
+})(window, document, DASHBOARD);
