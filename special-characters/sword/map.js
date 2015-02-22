@@ -266,35 +266,34 @@
     speak = base.languages.MTE || null,
     container, button_c, button_i, a;
 
-    container = d.createElement('div');
-    container.className = 'special-character-map';
-
-    for (var i = 0, len = cm.length; i < len; ++i) {
-        a = d.createElement('a');
-        a.title = cm[i][1];
-        a.innerHTML = String.fromCharCode(parseInt(cm[i][0], 10));
-        a.href = '#';
-        a.onclick = function() {
-            var c = this.className,
-                s = /(^| )selected( |$)/.test(c);
-            this.className = s ? c.replace(/(^| )selected( |$)/g, '$1$2') : c + ' selected';
-            return false;
-        };
-        a.ondblclick = function() {
-            base.composer.grip.insert(this.innerHTML);
-            base.composer.close(true);
-            return false;
-        };
-        container.appendChild(a);
-    }
-
     base.composer.button('at', {
         title: speak.plugin_sc_title_button || 'Special Characters',
         click: function(e, editor) {
+            container = d.createElement('div');
+            container.className = 'special-character-map';
+            for (var i = 0, len = cm.length; i < len; ++i) {
+                a = d.createElement('a');
+                a.title = cm[i][1];
+                a.innerHTML = String.fromCharCode(parseInt(cm[i][0], 10));
+                a.href = '#';
+                a.onclick = function() {
+                    var c = this.className,
+                        s = /(^| )selected( |$)/.test(c);
+                    this.className = s ? c.replace(/(^| )selected( |$)/g, '$1$2') : c + ' selected';
+                    return false;
+                };
+                a.ondblclick = function() {
+                    base.composer.grip.insert(this.innerHTML);
+                    base.composer.close(true);
+                    return false;
+                };
+                container.appendChild(a);
+            }
             editor.modal('special-character', function(overlay, modal) {
                 button_c = d.createElement('button');
                 button_c.innerHTML = speak.buttons.cancel;
                 button_c.onclick = function() {
+                    modal.children[1].removeChild(container);
                     editor.close(true);
                     return false;
                 };
@@ -308,6 +307,7 @@
                         }
                     }
                     editor.grip.insert(ii);
+                    modal.children[1].removeChild(container);
                     editor.close(true);
                     return false;
                 };
