@@ -1,6 +1,6 @@
 (function(w, d, base) {
 
-    if (typeof base.composer == "undefined") return;
+    if (typeof base.composer === "undefined") return;
 
     var cm = [
         ['160', 'no-break space'],

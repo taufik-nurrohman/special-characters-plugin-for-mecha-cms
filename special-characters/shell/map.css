@@ -8,12 +8,12 @@
   float:left;
   width:5%;
   height:2em;
-  font:normal normal 13px/2em "Times New Roman",Times,Serif;
+  font:normal normal 15px/2em Helmet,FreeSans,Sans-Serif;
   letter-spacing:0;
   text-transform:none;
   text-shadow:none;
   background-color:white;
-  color:black;
+  color:#222;
   cursor:pointer;
   text-decoration:none;
 }
