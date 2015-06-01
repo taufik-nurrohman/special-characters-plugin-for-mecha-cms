@@ -11,7 +11,7 @@
         ['8364', 'euro sign'],
         ['163', 'pound sign'],
         ['165', 'yen sign'],
-        // signs
+        // sign
         ['169', 'copyright sign'],
         ['174', 'registered sign'],
         ['8482', 'trade mark sign'],
@@ -25,7 +25,7 @@
         ['167', 'section sign'],
         ['182', 'paragraph sign'],
         ['223', 'sharp s / ess-zed'],
-        // quotations
+        // quotation
         ['8249', 'single left-pointing angle quotation mark'],
         ['8250', 'single right-pointing angle quotation mark'],
         ['171', 'left pointing guillemet'],
@@ -214,14 +214,14 @@
         ['967', 'chi'],
         ['968', 'psi'],
         ['969', 'omega'],
-        // symbols
+        // symbol
         ['8501', 'alef symbol'],
         ['982', 'pi symbol'],
         ['8476', 'real part symbol'],
         ['978', 'upsilon \u2013 hook symbol'],
         ['8472', 'Weierstrass p'],
         ['8465', 'imaginary part'],
-        // arrows
+        // arrow
         ['8592', 'leftwards arrow'],
         ['8593', 'upwards arrow'],
         ['8594', 'rightwards arrow'],
@@ -278,8 +278,8 @@
                 a.href = '#';
                 a.onclick = function() {
                     var c = this.className,
-                        s = /(^| )selected( |$)/.test(c);
-                    this.className = s ? c.replace(/(^| )selected( |$)/g, '$1$2') : c + ' selected';
+                        s = /(^|\s)selected(\s|$)/.test(c);
+                    this.className = s ? c.replace(/(^|\s)selected(\s|$)/g, '$1$2') : c + ' selected';
                     return false;
                 };
                 a.ondblclick = function() {
@@ -302,7 +302,7 @@
                 button_i.onclick = function() {
                     var aa = container.children, ii = "";
                     for (var i = 0, len = aa.length; i < len; ++i) {
-                        if (/(^| )selected( |$)/.test(aa[i].className)) {
+                        if (/(^|\s)selected(\s|$)/.test(aa[i].className)) {
                             ii += aa[i].innerHTML;
                         }
                     }
