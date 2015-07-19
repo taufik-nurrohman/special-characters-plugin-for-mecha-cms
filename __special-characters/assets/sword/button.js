@@ -266,23 +266,24 @@
     speak = base.languages.MTE,
     container, cancel, a;
 
+    container = d.createElement('div');
+    container.className = 'special-character-map';
+    for (var i = 0, len = cm.length; i < len; ++i) {
+        a = d.createElement('a');
+        a.title = cm[i][1];
+        a.innerHTML = String.fromCharCode(parseInt(cm[i][0], 10));
+        a.href = '#';
+        a.onclick = function() {
+            base.composer.grip.insert(this.innerHTML);
+            base.composer.close(true);
+            return false;
+        };
+        container.appendChild(a);
+    }
+
     base.composer.button('at plugin-special-characters', {
         title: speak.plugin_special_character[1],
         click: function(e, editor) {
-            container = d.createElement('div');
-            container.className = 'special-character-map';
-            for (var i = 0, len = cm.length; i < len; ++i) {
-                a = d.createElement('a');
-                a.title = cm[i][1];
-                a.innerHTML = String.fromCharCode(parseInt(cm[i][0], 10));
-                a.href = '#';
-                a.onclick = function() {
-                    editor.grip.insert(this.innerHTML);
-                    editor.close(true);
-                    return false;
-                };
-                container.appendChild(a);
-            }
             editor.modal('special-character', function(overlay, modal, header, content, footer) {
                 cancel = d.createElement('button');
                 cancel.innerHTML = speak.buttons.cancel;
