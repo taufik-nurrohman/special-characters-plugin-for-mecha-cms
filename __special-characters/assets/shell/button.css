@@ -19,15 +19,10 @@
 }
 
 .special-character-map a:focus,
-.special-character-map a:hover,
-.special-character-map a.selected {
+.special-character-map a:hover {
   background-color:#333;
   color:white;
   text-decoration:none;
 }
-
-.special-character-map a.selected,
-.special-character-map a.selected:focus,
-.special-character-map a.selected:hover {background-color:#365D98}
 
 .custom-modal-special-character {width:46.15384615384615em}

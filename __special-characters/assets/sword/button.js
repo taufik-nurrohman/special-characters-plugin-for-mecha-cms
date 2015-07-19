@@ -1,6 +1,6 @@
 (function(w, d, base) {
 
-    if (typeof base.composer === "undefined") return;
+    if (!base.composer) return;
 
     var cm = [
         ['160', 'no-break space'],
@@ -263,11 +263,11 @@
         ['8207', 'right-to-left mark'],
         ['173', 'soft hyphen']
     ],
-    speak = base.languages.MTE || null,
-    container, button_c, button_i, a;
+    speak = base.languages.MTE,
+    container, cancel, a;
 
-    base.composer.button('at', {
-        title: speak.plugin_sc_title_button || 'Special Characters',
+    base.composer.button('at plugin-special-characters', {
+        title: speak.plugin_special_character[1],
         click: function(e, editor) {
             container = d.createElement('div');
             container.className = 'special-character-map';
@@ -277,44 +277,23 @@
                 a.innerHTML = String.fromCharCode(parseInt(cm[i][0], 10));
                 a.href = '#';
                 a.onclick = function() {
-                    var c = this.className,
-                        s = /(^|\s)selected(\s|$)/.test(c);
-                    this.className = s ? c.replace(/(^|\s)selected(\s|$)/g, '$1$2') : c + ' selected';
-                    return false;
-                };
-                a.ondblclick = function() {
-                    base.composer.grip.insert(this.innerHTML);
-                    base.composer.close(true);
+                    editor.grip.insert(this.innerHTML);
+                    editor.close(true);
                     return false;
                 };
                 container.appendChild(a);
             }
-            editor.modal('special-character', function(overlay, modal) {
-                button_c = d.createElement('button');
-                button_c.innerHTML = speak.buttons.cancel;
-                button_c.onclick = function() {
-                    modal.children[1].removeChild(container);
+            editor.modal('special-character', function(overlay, modal, header, content, footer) {
+                cancel = d.createElement('button');
+                cancel.innerHTML = speak.buttons.cancel;
+                cancel.onclick = function() {
+                    content.removeChild(container);
                     editor.close(true);
                     return false;
                 };
-                button_i = d.createElement('button');
-                button_i.innerHTML = speak.buttons.ok || 'OK';
-                button_i.onclick = function() {
-                    var aa = container.children, ii = "";
-                    for (var i = 0, len = aa.length; i < len; ++i) {
-                        if (/(^|\s)selected(\s|$)/.test(aa[i].className)) {
-                            ii += aa[i].innerHTML;
-                        }
-                    }
-                    editor.grip.insert(ii);
-                    modal.children[1].removeChild(container);
-                    editor.close(true);
-                    return false;
-                };
-                modal.children[0].innerHTML = speak.plugin_sc_title_modal || 'Select Special Character';
-                modal.children[1].appendChild(container);
-                modal.children[2].appendChild(button_i);
-                modal.children[2].appendChild(button_c);
+                header.innerHTML = speak.plugin_special_character[0];
+                content.appendChild(container);
+                footer.appendChild(cancel);
             });
         }
     });

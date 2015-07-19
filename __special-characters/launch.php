@@ -3,14 +3,13 @@
 $speak = Config::speak();
 
 Config::merge('DASHBOARD.languages.MTE', array(
-    'plugin_sc_title_modal' => $speak->plugin_sc_title_modal,
-    'plugin_sc_title_button' => $speak->plugin_sc_title_button
+    'plugin_special_character' => Mecha::A($speak->plugin_special_character)
 ));
 
 Weapon::add('shell_after', function() {
-    echo Asset::stylesheet('cabinet/plugins/' . basename(__DIR__) . '/shell/map.css');
-}, 11);
+    echo Asset::stylesheet('cabinet/plugins/' . File::B(__DIR__) . '/assets/shell/button.css');
+});
 
 Weapon::add('SHIPMENT_REGION_BOTTOM', function() {
-    echo Asset::javascript('cabinet/plugins/' . basename(__DIR__) . '/sword/map.js');
-}, 11);
+    echo Asset::javascript('cabinet/plugins/' . File::B(__DIR__) . '/assets/sword/button.js');
+}, 20);

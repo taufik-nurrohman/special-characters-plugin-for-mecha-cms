@@ -1,2 +1,3 @@
-plugin_sc_title_modal: Pilih Karakter Spesial
-plugin_sc_title_button: Karakter Spesial
+plugin_special_character:
+  0: Pilih Karakter Spesial
+  1: Karakter Spesial
