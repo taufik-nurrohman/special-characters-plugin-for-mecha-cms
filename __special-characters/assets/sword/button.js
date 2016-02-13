@@ -2,7 +2,7 @@
 
     if (!base.composer) return;
 
-    var cm = [
+    var s = ' \u2013 ', cm = [
         [160, 'no-break space'],
         [38, 'ampersand'],
         [34, 'quotation mark'],
@@ -99,72 +99,72 @@
         [8224, 'dagger'],
         [8225, 'double dagger'],
         // alphabetical special chars
-        [192, 'A \u2013 grave'],
-        [193, 'A \u2013 acute'],
-        [194, 'A \u2013 circumflex'],
-        [195, 'A \u2013 tilde'],
-        [196, 'A \u2013 diaeresis'],
-        [197, 'A \u2013 ring above'],
+        [192, 'A' + s + 'grave'],
+        [193, 'A' + s + 'acute'],
+        [194, 'A' + s + 'circumflex'],
+        [195, 'A' + s + 'tilde'],
+        [196, 'A' + s + 'diaeresis'],
+        [197, 'A' + s + 'ring above'],
         [198, 'ligature AE'],
-        [199, 'C \u2013 cedilla'],
-        [200, 'E \u2013 grave'],
-        [201, 'E \u2013 acute'],
-        [202, 'E \u2013 circumflex'],
-        [203, 'E \u2013 diaeresis'],
-        [204, 'I \u2013 grave'],
-        [205, 'I \u2013 acute'],
-        [206, 'I \u2013 circumflex'],
-        [207, 'I \u2013 diaeresis'],
+        [199, 'C' + s + 'cedilla'],
+        [200, 'E' + s + 'grave'],
+        [201, 'E' + s + 'acute'],
+        [202, 'E' + s + 'circumflex'],
+        [203, 'E' + s + 'diaeresis'],
+        [204, 'I' + s + 'grave'],
+        [205, 'I' + s + 'acute'],
+        [206, 'I' + s + 'circumflex'],
+        [207, 'I' + s + 'diaeresis'],
         [208, 'ETH'],
-        [209, 'N \u2013 tilde'],
-        [210, 'O \u2013 grave'],
-        [211, 'O \u2013 acute'],
-        [212, 'O \u2013 circumflex'],
-        [213, 'O \u2013 tilde'],
-        [214, 'O \u2013 diaeresis'],
-        [216, 'O \u2013 slash'],
+        [209, 'N' + s + 'tilde'],
+        [210, 'O' + s + 'grave'],
+        [211, 'O' + s + 'acute'],
+        [212, 'O' + s + 'circumflex'],
+        [213, 'O' + s + 'tilde'],
+        [214, 'O' + s + 'diaeresis'],
+        [216, 'O' + s + 'slash'],
         [338, 'ligature OE'],
-        [352, 'S \u2013 caron'],
-        [217, 'U \u2013 grave'],
-        [218, 'U \u2013 acute'],
-        [219, 'U \u2013 circumflex'],
-        [220, 'U \u2013 diaeresis'],
-        [221, 'Y \u2013 acute'],
-        [376, 'Y \u2013 diaeresis'],
+        [352, 'S' + s + 'caron'],
+        [217, 'U' + s + 'grave'],
+        [218, 'U' + s + 'acute'],
+        [219, 'U' + s + 'circumflex'],
+        [220, 'U' + s + 'diaeresis'],
+        [221, 'Y' + s + 'acute'],
+        [376, 'Y' + s + 'diaeresis'],
         [222, 'THORN'],
-        [224, 'a \u2013 grave'],
-        [225, 'a \u2013 acute'],
-        [226, 'a \u2013 circumflex'],
-        [227, 'a \u2013 tilde'],
-        [228, 'a \u2013 diaeresis'],
-        [229, 'a \u2013 ring above'],
+        [224, 'a' + s + 'grave'],
+        [225, 'a' + s + 'acute'],
+        [226, 'a' + s + 'circumflex'],
+        [227, 'a' + s + 'tilde'],
+        [228, 'a' + s + 'diaeresis'],
+        [229, 'a' + s + 'ring above'],
         [230, 'ligature ae'],
-        [231, 'c \u2013 cedilla'],
-        [232, 'e \u2013 grave'],
-        [233, 'e \u2013 acute'],
-        [234, 'e \u2013 circumflex'],
-        [235, 'e \u2013 diaeresis'],
-        [236, 'i \u2013 grave'],
-        [237, 'i \u2013 acute'],
-        [238, 'i \u2013 circumflex'],
-        [239, 'i \u2013 diaeresis'],
+        [231, 'c' + s + 'cedilla'],
+        [232, 'e' + s + 'grave'],
+        [233, 'e' + s + 'acute'],
+        [234, 'e' + s + 'circumflex'],
+        [235, 'e' + s + 'diaeresis'],
+        [236, 'i' + s + 'grave'],
+        [237, 'i' + s + 'acute'],
+        [238, 'i' + s + 'circumflex'],
+        [239, 'i' + s + 'diaeresis'],
         [240, 'eth'],
-        [241, 'n \u2013 tilde'],
-        [242, 'o \u2013 grave'],
-        [243, 'o \u2013 acute'],
-        [244, 'o \u2013 circumflex'],
-        [245, 'o \u2013 tilde'],
-        [246, 'o \u2013 diaeresis'],
+        [241, 'n' + s + 'tilde'],
+        [242, 'o' + s + 'grave'],
+        [243, 'o' + s + 'acute'],
+        [244, 'o' + s + 'circumflex'],
+        [245, 'o' + s + 'tilde'],
+        [246, 'o' + s + 'diaeresis'],
         [248, 'o slash'],
         [339, 'ligature oe'],
-        [353, 's \u2013 caron'],
-        [249, 'u \u2013 grave'],
-        [250, 'u \u2013 acute'],
-        [251, 'u \u2013 circumflex'],
-        [252, 'u \u2013 diaeresis'],
-        [253, 'y \u2013 acute'],
+        [353, 's' + s + 'caron'],
+        [249, 'u' + s + 'grave'],
+        [250, 'u' + s + 'acute'],
+        [251, 'u' + s + 'circumflex'],
+        [252, 'u' + s + 'diaeresis'],
+        [253, 'y' + s + 'acute'],
         [254, 'thorn'],
-        [255, 'y \u2013 diaeresis'],
+        [255, 'y' + s + 'diaeresis'],
         [913, 'Alpha'],
         [914, 'Beta'],
         [915, 'Gamma'],
@@ -218,7 +218,7 @@
         [8501, 'alef symbol'],
         [982, 'pi symbol'],
         [8476, 'real part symbol'],
-        [978, 'upsilon \u2013 hook symbol'],
+        [978, 'upsilon' + s + 'hook symbol'],
         [8472, 'Weierstrass p'],
         [8465, 'imaginary part'],
         // arrow
@@ -264,6 +264,10 @@
         [173, 'soft hyphen']
     ],
     speak = base.languages.MTE,
+    name = 'at plugin-special-characters',
+    editor = base.composer.grip,
+    event = base.composer.event,
+    lastFocus = 0,
     container, cancel, a;
 
     container = d.createElement('div');
@@ -272,31 +276,50 @@
         a = d.createElement('a');
         a.title = cm[i][1];
         a.innerHTML = '&#' + cm[i][0] + ';';
-        a.href = '#';
-        a.onclick = function() {
-            base.composer.grip.insert(this.innerHTML);
-            base.composer.close(true);
-            return false;
-        };
+        a.href = 'javascript:;';
+        event("click", a, function() {
+            return editor.insert(this.innerHTML), base.composer.exit(true), false;
+        });
+        event("keydown", a, function(e) {
+            var k = editor.key(e);
+            if (k === 'escape')
+                return base.composer.exit(true), false;
+            if (k.match(/^arrow(right|down)$/))
+                return this.nextSibling && this.nextSibling.focus(), lastFocus++, false;
+            if (k.match(/^arrow(left|up)$/))
+                return this.previousSibling && this.previousSibling.focus(), lastFocus--, false;
+        });
         container.appendChild(a);
     }
 
-    base.composer.button('at plugin-special-characters', {
-        title: speak.plugin_special_character[1],
-        click: function(e, editor) {
-            editor.modal('special-character', function(overlay, modal, header, content, footer) {
+    base.composer.button(name, {
+        title: speak.plugin_special_characters[1],
+        click: function(e) {
+            base.composer.modal('special-character', function(overlay, modal, header, content, footer) {
                 cancel = d.createElement('button');
-                cancel.innerHTML = speak.buttons.cancel;
-                cancel.onclick = function() {
-                    editor.close(true);
-                    return false;
-                };
-                header.innerHTML = speak.plugin_special_character[0];
+                cancel.innerHTML = speak.actions.cancel;
+                event("click", cancel, function() {
+                    return base.composer.exit(true), false;
+                });
+                event("keydown", cancel, function(e) {
+                    if (editor.key(e, 'escape')) {
+                        return base.composer.exit(true), false;
+                    }
+                });
+                header.innerHTML = speak.plugin_special_characters[0];
                 content.innerHTML = "";
                 content.appendChild(container);
                 footer.appendChild(cancel);
+                setTimeout(function() {
+                    container.getElementsByTagName('a')[lastFocus].focus();
+                }, .1);
             });
         }
+    });
+
+    // `Ctrl + @` for "special characters"
+    base.composer.shortcut('ctrl+@', function() {
+        return editor.config.buttons[name].click(), false;
     });
 
 })(window, document, DASHBOARD);

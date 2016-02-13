@@ -1,3 +1,5 @@
-plugin_special_character:
+plugin_special_characters:
   0: Select Special Character
-  1: Special Character
+  1:
+    0: Special Character
+    1: ⌘+@

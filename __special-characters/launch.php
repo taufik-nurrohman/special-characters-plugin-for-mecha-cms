@@ -1,13 +1,13 @@
 <?php
 
-Config::merge('DASHBOARD.languages.MTE', array(
-    'plugin_special_character' => (array) $speak->plugin_special_character
-));
+$f = 'editor.button.' . ltrim(File::B(__DIR__), '_') . '.min.';
 
-Weapon::add('shell_after', function() {
-    echo Asset::stylesheet(__DIR__ . DS . 'assets' . DS . 'shell' . DS . 'button.css');
+Config::merge('DASHBOARD.languages.MTE.plugin_special_characters', $speak->plugin_special_characters);
+
+Weapon::add('shell_after', function() use($f) {
+    echo Asset::stylesheet(__DIR__ . DS . 'assets' . DS . 'shell' . DS . 'button.css', "", 'shell/' . $f . 'css');
 }, 20);
 
-Weapon::add('SHIPMENT_REGION_BOTTOM', function() {
-    echo Asset::javascript(__DIR__ . DS . 'assets' . DS . 'sword' . DS . 'button.js');
+Weapon::add('SHIPMENT_REGION_BOTTOM', function() use($f) {
+    echo Asset::javascript(__DIR__ . DS . 'assets' . DS . 'sword' . DS . 'button.js', "", 'sword/' . $f . 'js');
 }, 20);

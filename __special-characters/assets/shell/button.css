@@ -20,7 +20,7 @@
 
 .special-character-map a:focus,
 .special-character-map a:hover {
-  background-color:#333;
+  background-color:#222;
   color:white;
   text-decoration:none;
 }
